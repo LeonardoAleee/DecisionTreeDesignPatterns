@@ -34,3 +34,17 @@ Na árvore de decisão, o Iterator controla como os nós são visitados:
 - `BFSIterator` percorre a árvore em largura, visitando primeiro todos os nós de um nível antes de avançar para o próximo.
 
 O uso de iteradores permite navegar pela árvore de forma independente da lógica do nó, mantendo o design desacoplado e flexível.
+
+-----
+
+### State
+
+O padrão **State** viabiliza que um objeto altere seu comportamento conforme seu estado interno muda.
+
+No projeto, ele modela o processo de construção da árvore:
+
+- `TreeBuilder` é o contexto.
+- Estados como `SplittingState`, `StoppingState` e `PruningState` representam fases da construção.
+
+Cada estado define um comportamento diferente, e o `TreeBuilder` muda de estado conforme a construção avança.  
+Isso simula as fases típicas de uma árvore de decisão real.
