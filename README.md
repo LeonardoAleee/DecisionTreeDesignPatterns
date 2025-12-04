@@ -17,9 +17,9 @@ O padrão **Composite** permite estruturar objetos em hierarquias do tipo árvor
 
 No projeto, esse padrão modela a própria árvore de decisão:
 
-- **Node** é o componente base.
-- **DecisionNode** representa nós internos que possuem filhos (Composite).
-- **LeafNode** representa folhas, sem filhos (Leaf).
+- `Node` é o componente base.
+- `DecisionNode` representa nós internos que possuem filhos (Composite).
+- `LeafNode` representa folhas, sem filhos (Leaf).
 
 Com isso, o código trata `DecisionNode` e `LeafNode` de forma uniforme, permitindo chamadas como `node.accept(visitor)` independentemente do tipo do nó. Esse padrão é ideal para estruturas hierárquicas como árvores de decisão.
 
@@ -48,3 +48,18 @@ No projeto, ele modela o processo de construção da árvore:
 
 Cada estado define um comportamento diferente, e o `TreeBuilder` muda de estado conforme a construção avança.  
 Isso simula as fases típicas de uma árvore de decisão real.
+
+-----
+
+### Visitor
+
+O padrão **Visitor** concede a capacidade de separar operações aplicadas à estrutura sem precisar modificar as classes da árvore.
+
+Nesta modelagem, a aplicação do padrão inclui:
+
+- `Visitor` é a interface base.
+- `CountLeavesVisitor` conta folhas.
+- `DepthVisitor` calcula a profundidade.
+
+Cada visitante implementa um comportamento diferente e é aplicado aos nós via `accept(visitor)`.  
+Isso permite a adição de novas operações à árvore sem alterar as classes `Node`, `DecisionNode` ou `LeafNode`.
