@@ -3,7 +3,11 @@ from abc import ABC, abstractmethod
 from typing import List, Optional, Any
 
 #######################################################################
-# Composite: Node, DecisionNode e LeafNode
+# Composite Pattern:
+#   Node (componente base)
+#   CompositeNode (nó composto)
+#   DecisionNode (composite especializado)
+#   LeafNode (folha)
 #######################################################################
 
 class Node(ABC):
@@ -61,7 +65,8 @@ class LeafNode(Node):
         visitor.visit_leaf(self)
 
 #######################################################################
-# Iterator: PreOrderIterator
+# Iterator Pattern:
+#   PreOrderIterator (iterador em pré-ordem sobre a árvore)
 #######################################################################
 
 class PreOrderIterator:
@@ -88,7 +93,10 @@ class PreOrderIterator:
         return node
 
 #######################################################################
-# Visitor: DepthVisitor e CountLeavesVisitor
+# Visitor Pattern:
+#   Visitor (interface base)
+#   DepthVisitor (cálculo da profundidade)
+#   CountLeavesVisitor (contagem de folhas)
 #######################################################################
 
 class Visitor(ABC):
@@ -143,7 +151,12 @@ class CountLeavesVisitor(Visitor):
         return self._count
         
 #######################################################################
-# Visitor: TreeBuilder, SplittingState, StoppingState e PruningState
+# State Pattern:
+#   BuilderState (estado base)
+#   SplittingState (estado de divisão)
+#   StoppingState (estado de parada)
+#   PruningState (estado de poda)
+#   TreeBuilder (contexto que alterna entre estados)
 #######################################################################
 
 class BuilderState(ABC):
