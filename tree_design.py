@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from typing import List, Optional, Any
 
 #######################################################################
-# Composite: Node, DecisionNode, LeafNode
+# Composite: Node, DecisionNode e LeafNode
 #######################################################################
 
 class Node(ABC):
@@ -86,3 +86,14 @@ class PreOrderIterator:
         node = self._snapshot[self._index]
         self._index += 1
         return node
+
+#######################################################################
+# Visitor: DepthVisitor e CountLeavesVisitor
+#######################################################################
+
+class Visitor(ABC):
+    @abstractmethod
+    def visit_decision(self, node: DecisionNode) -> None: ...
+
+    @abstractmethod
+    def visit_leaf(self, node: LeafNode) -> None: ...
