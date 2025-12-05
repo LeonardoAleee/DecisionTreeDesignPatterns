@@ -161,3 +161,9 @@ class SpittingState(BuilderState):
         right = LeafNode(f"{builder._working_node.name}_right", prediction = "B")
         builder._working_node.add_child(left)
         builder.set_state(StoppingState()) 
+
+class StoppingState(BuilderState):
+    def handle(self, builder: "TreeBuilder") -> None:
+        print("[State] StoppingState: Verificando condição de parada.")
+        print("[State] Critério de parada satisfeito para o nó atual.")
+        builder.set_state(PruningState())
