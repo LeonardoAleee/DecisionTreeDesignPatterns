@@ -149,3 +149,15 @@ class CountLeavesVisitor(Visitor):
 class BuilderState(ABC):
     @abstractmethod
     def handle(self, builder: "TreeBuilder") -> None: ...
+
+class SpittingState(BuilderState):
+    def handle(self, builder: "TreeBuilder") -> None:
+        print("[State] SpittingState: Dividindo o nó atual.")
+        if builder._working_node is None:
+            print("[State] Nenhum nó de trabalho. Criando nó raiz como DecisionNode.")
+            builder._working_node = DecisionNode("root_split", splitting_feature = "feature_x")
+            builder._tree_root = builder._working_node
+        left = LeafNode(f"{builder._working_node.name}_left", prediction = "A")
+        right = LeafNode(f"{builder._working_node.name}_right", prediction = "B")
+        builder._working_node.add_child(left)
+        builder.set_state(StoppingState()) 
