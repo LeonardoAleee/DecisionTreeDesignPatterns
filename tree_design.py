@@ -179,3 +179,22 @@ class PruningState(BuilderState):
         else:
             print("[State] Nenhum nó para podar.")
         builder.set_state(None)
+
+class TreeBuilder:
+    def __init__(self) -> None:
+        self._state: Optional[BuilderState] = None
+        self._tree_root: Optional[Node] = None
+        self._working_node: Optional[Node] = None
+
+    def set_state(self, state: Optional[BuilderState]) -> None:
+        self._state = state
+        print(f"[TreeBuilder] Estado alterado para {type(state).__name__ if state is not None else 'None'}")
+
+    def run(self) -> None:
+        print("[TreeBuilder] Iniciando construção da árvore.")
+        while self._state is not None:
+            self._state.handle(self)
+        print("[TreeBuilder] Construção finalizada.")
+
+    def get_tree(self) -> Optional[Node]:
+        return self._tree_root
