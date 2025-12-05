@@ -40,7 +40,7 @@ def demo_visitors(root):
 def demo_state_builder():
     print("\n[demo] Construindo árvore com TreeBuilder e estados:")
     builder = TreeBuilder()
-    builder.set_state(SpittingState())
+    builder.set_state(SplittingState())
     builder.run()
     tree = builder.get_tree()
     if tree is not None:

@@ -143,16 +143,16 @@ class CountLeavesVisitor(Visitor):
         return self._count
         
 #######################################################################
-# Visitor: TreeBuilder, SpittingState, StoppingState e PruningState
+# Visitor: TreeBuilder, SplittingState, StoppingState e PruningState
 #######################################################################
 
 class BuilderState(ABC):
     @abstractmethod
     def handle(self, builder: "TreeBuilder") -> None: ...
 
-class SpittingState(BuilderState):
+class SplittingState(BuilderState):
     def handle(self, builder: "TreeBuilder") -> None:
-        print("[State] SpittingState: Dividindo o nó atual.")
+        print("[State] SplittingState: Dividindo o nó atual.")
         if builder._working_node is None:
             print("[State] Nenhum nó de trabalho. Criando nó raiz como DecisionNode.")
             builder._working_node = DecisionNode("root_split", splitting_feature = "feature_x")
