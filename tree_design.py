@@ -141,3 +141,11 @@ class CountLeavesVisitor(Visitor):
     def result(self) -> int:
         print(f'[CountLeavesVisitor] Total de folhas encontradas: {self._count}')
         return self._count
+        
+#######################################################################
+# Visitor: TreeBuilder, SpittingState, StoppingState e PruningState
+#######################################################################
+
+class BuilderState(ABC):
+    @abstractmethod
+    def handle(self, builder: "TreeBuilder") -> None: ...
