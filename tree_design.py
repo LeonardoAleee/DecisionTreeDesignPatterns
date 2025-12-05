@@ -19,3 +19,27 @@ class Node(ABC):
 
     @abstractmethod
     def accept(self, visitor: "Visitor") -> None: ...
+
+class CompositeNode(Node):
+    def __init__(self, name: str) -> None:
+        super().__init__(name)
+        self._children: List[Node] = []
+
+    def add_child(self, child: Node) -> None:
+        child.set_parent(self)
+        self._children.append(child)
+        print(f'[Composite] Adicionando flho "{child.name}" a "{self.name}"')
+
+    def remove_child(self, child: Node) -> None:
+        self._children.remove(child)
+        child.set_parent(None)
+        print(f'[Composite] Removendo filho "{child.name}" de "{self.name}"')
+
+    def children(self) -> List[Node]:
+        return list(self._children)
+    
+    def is_leaf(self) -> bool:
+        return False
+    
+    def accept(self, visitor: "Visitor") -> None:
+        visitor.visit_decision(self)
