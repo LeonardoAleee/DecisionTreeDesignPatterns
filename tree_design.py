@@ -97,3 +97,30 @@ class Visitor(ABC):
 
     @abstractmethod
     def visit_leaf(self, node: LeafNode) -> None: ...
+
+class DepthVisitor(Visitor):
+    def __init__(self) -> None:
+        self._max_depth = 0
+        self._current_depth = 0
+
+    def visit_decision(self, node: DecisionNode) -> None:
+        print(f'[Visitor] Visitando DecisionNode "{node.name}"')
+        children = node.children()
+        if not children:
+            self._max_depth = max(self._max_depth, self._current_depth + 1)
+            print(f'[DepthVisitor] Nó "{node.name}" é folha virtual, max_depth = {self._max_depth}')
+            return
+        for child in children:
+            self._current_depth += 1
+            child.accept(self)
+            self._current_depth -= 1
+
+    def visit_leaf(self, node: LeafNode) -> None:
+        depth_here = self._current_depth + 1
+        if depth_here > self._max_depth:
+            self._max_depth = depth_here
+        print(f'[DepthVisitor] Visitando Leaf "{node.name}" em profundidade {depth_here}')
+
+    def result(self) -> int:
+        print(f'[DepthVisitor] Profundidade máxima encontrada: {self._max_depth}')
+        return self._max_depth
