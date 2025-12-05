@@ -124,3 +124,20 @@ class DepthVisitor(Visitor):
     def result(self) -> int:
         print(f'[DepthVisitor] Profundidade máxima encontrada: {self._max_depth}')
         return self._max_depth
+    
+class CountLeavesVisitor(Visitor):
+    def __init__(self) -> None:
+        self._count = 0
+
+    def visit_decision(self, node: DecisionNode) -> None:
+        print(f'[CountLeavesVisitor] Visitando DecisionNode "{node.name}"')
+        for child in node.children():
+            child.accept(self)
+
+    def visit_leaf(self, node: LeafNode) -> None:
+        self._count += 1
+        print(f'[CountLeavesVisitor] Encontrou Leaf "{node.name}". Total = {self._count}')
+
+    def result(self) -> int:
+        print(f'[CountLeavesVisitor] Total de folhas encontradas: {self._count}')
+        return self._count
