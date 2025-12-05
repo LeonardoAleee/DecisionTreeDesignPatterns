@@ -9,6 +9,12 @@ Este projeto apresenta a modelagem de uma árvore de decisão simplificada, util
 
 Todo o comportamento é mockado, sem execução de algoritmos reais — apenas prints que representam operações e transições.
 
+## Diagrama de Classes (UML)
+
+Abaixo, a representação visual da arquitetura do projeto, detalhando as relações entre os padrões aplicados:
+
+![Diagrama de Classes do Projeto](class_diagram.png)
+
 -----
 
 ### Composite
