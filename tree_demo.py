@@ -36,3 +36,18 @@ def demo_visitors(root):
     count_visitor = CountLeavesVisitor()
     root.accept(count_visitor)
     count_visitor.result()
+
+def demo_state_builder():
+    print("\n[demo] Construindo árvore com TreeBuilder e estados:")
+    builder = TreeBuilder()
+    builder.set_state(SpittingState())
+    builder.run()
+    tree = builder.get_tree()
+    if tree is not None:
+        print("[demo] Árvore construída pelo builder:", tree.name)
+        print("[demo] Listando filhos do nó raiz após builder:")
+        if isinstance(tree, DecisionNode):
+            for child in tree.children():
+                print("  -", child.name)
+    else:
+        print("[demo] Builder não retornou árvore.")
