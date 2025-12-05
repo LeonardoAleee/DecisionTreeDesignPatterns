@@ -51,3 +51,9 @@ def demo_state_builder():
                 print("  -", child.name)
     else:
         print("[demo] Builder não retornou árvore.")
+
+if __name__ == "__main__":
+    root = build_sample_tree()
+    demo_iterator(root)
+    demo_visitors(root)
+    demo_state_builder()

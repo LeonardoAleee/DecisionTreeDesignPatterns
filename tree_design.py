@@ -116,7 +116,7 @@ class DepthVisitor(Visitor):
             self._current_depth -= 1
 
     def visit_leaf(self, node: LeafNode) -> None:
-        depth_here = self._current_depth + 1
+        depth_here = self._current_depth
         if depth_here > self._max_depth:
             self._max_depth = depth_here
         print(f'[DepthVisitor] Visitando Leaf "{node.name}" em profundidade {depth_here}')
