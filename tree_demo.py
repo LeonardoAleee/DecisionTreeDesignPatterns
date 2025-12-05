@@ -25,3 +25,14 @@ def demo_iterator(root):
     for node in PreOrderIterator(root):
         node_type = "Leaf" if node.is_leaf() else "Decision"
         print(f" -> [{node_type}] {node.name}")
+
+def demo_visitors(root):
+    print("\n[demo] Executando DepthVisitor:")
+    depth_visitor = DepthVisitor()
+    root.accept(depth_visitor)
+    depth_visitor.result()
+
+    print("\n[demo] Executando CountLeavesVisitor:")
+    count_visitor = CountLeavesVisitor()
+    root.accept(count_visitor)
+    count_visitor.result()
