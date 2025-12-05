@@ -175,7 +175,7 @@ class PruningState(BuilderState):
         root = builder._tree_root
         if isinstance(root, DecisionNode) and len(root.children()) > 1:
             child_to_remove = root.children()[-1]
-            print(f"[State] Podando o nó filho '{child_to_remove.name} de '{root.name}'.")
+            print(f"[State] Podando o nó filho '{child_to_remove.name}' de '{root.name}'.")
             root.remove_child(child_to_remove)
         else:
             print("[State] Nenhum nó para podar.")
