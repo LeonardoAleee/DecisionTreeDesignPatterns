@@ -167,3 +167,15 @@ class StoppingState(BuilderState):
         print("[State] StoppingState: Verificando condição de parada.")
         print("[State] Critério de parada satisfeito para o nó atual.")
         builder.set_state(PruningState())
+
+class PruningState(BuilderState):
+    def handle(self, builder: "TreeBuilder") -> None:
+        print("[State] PruningState: Iniciando etapa de podagem.")
+        root = builder._tree_root
+        if isinstance(root, DecisionNode) and len(root.children()) > 1:
+            child_to_remove = root.children()[-1]
+            print(f"[State] Podando o nó filho '{child_to_remove.name} de '{root.name}'.")
+            root.remove_child(child_to_remove)
+        else:
+            print("[State] Nenhum nó para podar.")
+        builder.set_state(None)
