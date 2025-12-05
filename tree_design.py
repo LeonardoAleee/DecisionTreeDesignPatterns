@@ -160,6 +160,7 @@ class SpittingState(BuilderState):
         left = LeafNode(f"{builder._working_node.name}_left", prediction = "A")
         right = LeafNode(f"{builder._working_node.name}_right", prediction = "B")
         builder._working_node.add_child(left)
+        builder._working_node.add_child(right)
         builder.set_state(StoppingState()) 
 
 class StoppingState(BuilderState):
