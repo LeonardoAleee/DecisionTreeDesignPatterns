@@ -43,3 +43,8 @@ class CompositeNode(Node):
     
     def accept(self, visitor: "Visitor") -> None:
         visitor.visit_decision(self)
+
+class DecisionNode(CompositeNode):
+    def __init__(self, name: str, splitting_feature: Optional[str] = None) -> None:
+        super().__init__(name)
+        self.splitting_feature = splitting_feature
