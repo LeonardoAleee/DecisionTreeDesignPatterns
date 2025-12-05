@@ -19,3 +19,9 @@ def build_sample_tree() -> DecisionNode:
     root.add_child(left)
     root.add_child(right)   
     return root
+
+def demo_iterator(root):
+    print("\n[demo] Iterando na árvore em pré-ordem com PreOrderIterator:")
+    for node in PreOrderIterator(root):
+        node_type = "Leaf" if node.is_leaf() else "Decision"
+        print(f" -> [{node_type}] {node.name}")
