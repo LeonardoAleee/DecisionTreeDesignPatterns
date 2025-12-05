@@ -1,6 +1,6 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
-from typing import List, Optional
+from typing import List, Optional, Any
 
 #######################################################################
 # Composite: Node, DecisionNode, LeafNode
@@ -48,3 +48,14 @@ class DecisionNode(CompositeNode):
     def __init__(self, name: str, splitting_feature: Optional[str] = None) -> None:
         super().__init__(name)
         self.splitting_feature = splitting_feature
+
+class LeafNode(Node):
+    def __init__(self, name: str, prediction: Optional[Any] = None) -> None:
+        super().__init__(name)
+        self.prediction = prediction
+
+    def is_leaf(self) -> bool:
+        return True
+    
+    def accept(self, visitor: "Visitor") -> None:
+        visitor.visit_leaf(self)
