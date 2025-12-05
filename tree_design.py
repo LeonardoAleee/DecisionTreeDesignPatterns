@@ -59,3 +59,30 @@ class LeafNode(Node):
     
     def accept(self, visitor: "Visitor") -> None:
         visitor.visit_leaf(self)
+
+#######################################################################
+# Iterator: PreOrderIterator
+#######################################################################
+
+class PreOrderIterator:
+    def __init__(self, root: Node) -> None:
+        self._snapshot = []
+        self._build_snapshot(root)
+        self._index = 0
+        print(f"[Iterator] Snapshot criado com {len(self._snapshot)} nós (pre-order).")
+
+    def _build_snapshot(self, node: Node) -> None:
+        self._snapshot.append(node)
+        if isinstance(node, CompositeNode):
+            for child in node.children():
+                self._build_snapshot(child)
+
+    def __iter__(self):
+        return self
+    
+    def __next__(self) -> Node:
+        if self._index >= len(self._snapshot):
+            raise StopIteration
+        node = self._snapshot[self._index]
+        self._index += 1
+        return node
