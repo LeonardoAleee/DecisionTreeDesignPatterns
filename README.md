@@ -69,3 +69,15 @@ Nesta modelagem, a aplicação do padrão inclui:
 
 Cada visitante implementa um comportamento diferente e é aplicado aos nós via `accept(visitor)`.  
 Isso permite a adição de novas operações à árvore sem alterar as classes `Node`, `DecisionNode` ou `LeafNode`.
+
+-----
+
+## Estrutura do Projeto
+
+/
+
+├── tree_design.py # Implementação dos padrões (Composite, Iterator, Visitor, State)
+
+├── tree_demo.py # Código de demonstração
+
+└── class_diagram.png # Diagrama UML
