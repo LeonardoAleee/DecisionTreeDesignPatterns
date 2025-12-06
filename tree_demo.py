@@ -38,7 +38,7 @@ def demo_visitors(root):
     count_visitor.result()
 
 def demo_state_builder():
-    print("\n[demo] Construindo árvore com TreeBuilder e estados:")
+    print("\n[demo] Construindo árvore com TreeBuilder:")
     builder = TreeBuilder()
     builder.set_state(SplittingState())
     builder.run()
