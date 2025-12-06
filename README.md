@@ -70,7 +70,6 @@ Nesta modelagem, a aplicação do padrão inclui:
 Cada visitante implementa um comportamento diferente e é aplicado aos nós via `accept(visitor)`.  
 Isso permite a adição de novas operações à árvore sem alterar as classes `Node`, `DecisionNode` ou `LeafNode`.
 
------
 
 ## Estrutura do Projeto
 
@@ -81,3 +80,20 @@ Isso permite a adição de novas operações à árvore sem alterar as classes `
 ├── tree_demo.py # Código de demonstração
 
 └── class_diagram.png # Diagrama UML
+
+
+## Como executar
+
+1. Certifique-se de estar no diretório do projeto.
+2. Execute o script de demonstração:
+
+```bash
+python tree_demo.py
+```
+
+Isso executa:
+
+- a construção mockada da árvore;
+- o percurso em pré-ordem;
+- a aplicação dos visitantes (profundidade e contagem de folhas);
+- a simulação da construção via estados.
